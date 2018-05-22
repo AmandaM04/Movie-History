@@ -1,1 +1,3 @@
-console.error('it works');
+const events = require('./events');
+
+events.myLinks();
