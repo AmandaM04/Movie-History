@@ -1,6 +1,12 @@
 /* eslint camelcase: 0 */
 const dom = require('./dom');
 
+let tmdbKey = '';
+
+const setKey = (key) => {
+  tmdbKey = key;
+};
+
 const singleMovie = {
   adult: false,
   backdrop_path: '/c2Ax8Rox5g6CneChwy1gmu4UbSb.jpg',
@@ -24,4 +30,5 @@ const showResults = () => {
 
 module.exports = {
   showResults,
+  setKey,
 };
