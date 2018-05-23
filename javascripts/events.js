@@ -19,8 +19,13 @@ const myLinks = () => {
 };
 
 const pressEnter = () => {
-// big old keypress event
-  tmdb.showResults();
+  // big old keypress event
+  $(document).keypress((e) => {
+    if (e.key === 'Enter') {
+      const searchWords = $('#searchBar').val().replace('', '%20');
+      tmdb.showResults(searchWords);
+    }
+  });
 };
 
 const initializer = () => {
