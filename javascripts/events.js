@@ -1,11 +1,12 @@
+const tmdb = require('./tmdb');
+
 const myLinks = () => {
   $(document).click((e) => {
-    console.error('err', e);
     if (e.target.id === 'authentication') {
       $('#myMovies').addClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').removeClass('hide');
-    } else if (e.target.id === 'movie') {
+    } else if (e.target.id === 'movieButt') {
       $('#myMovies').removeClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').addClass('hide');
@@ -17,6 +18,16 @@ const myLinks = () => {
   });
 };
 
+const pressEnter = () => {
+// big old keypress event
+  tmdb.showResults();
+};
+
+const initializer = () => {
+  myLinks();
+  pressEnter();
+};
+
 module.exports = {
-  myLinks,
+  initializer,
 };
