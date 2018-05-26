@@ -1,9 +1,9 @@
-const domString = (movieArray) => {
+const domString = (movieArray, config) => {
   let movieString = '';
   movieArray.forEach((movie) => {
     movieString += `<div class="col-sm-6 col-md-4">`;
     movieString += `<div class="thumbnail">`;
-    // movieString += `<img src="..." alt="...">`;
+    movieString += `<img src="${config.base_url}/w342/${movie.poster_path}" alt="Movie Poster">`;
     movieString += `<div class="caption">`;
     movieString += `<h3>${movie.original_title}</h3>`;
     movieString += `<p>${movie.overview}</p>`;
