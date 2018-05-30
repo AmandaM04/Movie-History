@@ -5,12 +5,12 @@ const domString = (movieArray, config) => {
       movieString += `<div class="row">`;
     }
     movieString += `<div class="col-sm-6 col-md-4">`;
-    movieString += `<div class="thumbnail">`;
-    movieString += `<img src="${config.base_url}/w342/${movie.poster_path}" alt="Movie Poster">`;
+    movieString += `<div class="thumbnail movie">`;
+    movieString += `<img data-poster="${movie.poster_path} src="${config.base_url}/w342/${movie.poster_path}" alt="Movie Poster">`;
     movieString += `<div class="caption">`;
-    movieString += `<h3>${movie.original_title}</h3>`;
-    movieString += `<p>${movie.overview}</p>`;
-    movieString += `<p><a href="#" class="btn btn-primary" role="button">Review</a> <a href="#" class="btn btn-default" role="button">Wishlist</a></p>`;
+    movieString += `<h3 class="movie-title">${movie.original_title}</h3>`;
+    movieString += `<p class="movie-overview">${movie.overview}</p>`;
+    movieString += `<p><a href="#" class="btn btn-primary" role="button">Review</a> <a class="btn btn-default addMovieToWishlist" role="button">Wishlist</a></p>`;
     movieString += `</div>`;
     movieString += `</div>`;
     movieString += `</div>`;
