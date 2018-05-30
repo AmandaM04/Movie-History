@@ -13,6 +13,7 @@ const myLinks = () => {
       $('#myMovies').removeClass('hide');
       $('#search').addClass('hide');
       $('#authScreen').addClass('hide');
+      getAllMoviesEvent();
     } else if (e.target.id === 'navSearch') {
       $('#myMovies').addClass('hide');
       $('#search').removeClass('hide');
@@ -49,6 +50,18 @@ const saveMovieToWishlistEvent = () => {
         console.error('error in saving movie', error);
       });
   });
+};
+
+const getAllMoviesEvent = () => {
+  fireBaseApi.getAllMovies()
+    .then((moviesArray) => {
+      moviesArray.forEach ((movie) => {
+        $('#savedMovies').append(movie.title);
+      });
+    })
+    .catch((error) => {
+      console.error('error in get all movies', error);
+    });
 };
 
 const initializer = () => {
