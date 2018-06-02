@@ -56,7 +56,7 @@ const saveMovieToWishlistEvent = () => {
 const getAllMoviesEvent = () => {
   fireBaseApi.getAllMovies()
     .then((moviesArray) => {
-      dom.domString(moviesArray, tmdb.getImageConfig(), 'savedMovies');
+      dom.domString(moviesArray, tmdb.getImageConfig(), 'savedMovies', true);
     })
     .catch((error) => {
       console.error('error in get all movies', error);
