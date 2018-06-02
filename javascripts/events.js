@@ -76,11 +76,33 @@ const deleteMovieFromFirebase = () => {
   });
 };
 
+const updateMovieEvent = () => {
+  $(document).on('click', '.updateMovieToWatched', (e) => {
+    const movieToUpdateId = $(e.target).closest('.movie').data('firebaseId');
+    const movieToUpdateCard = $(e.target).closest('.movie'); // target the button with the closet parent that has a class of movie
+    const updatedMovie = {
+      title: movieToUpdateCard.find('.movie-title').text(),
+      overview: movieToUpdateCard.find('.movie-overview').text(),
+      poster_path: movieToUpdateCard.find('img').data('poster'),
+      rating: 0,
+      isWatched: true,
+    };
+    fireBaseApi.updateMovieToWatchedInDb(updatedMovie, movieToUpdateId)
+      .then(() => {
+        getAllMoviesEvent();
+      })
+      .catch((error) => {
+        console.error('error from update movie', error);
+      });
+  });
+};
+
 const initializer = () => {
   myLinks();
   pressEnter();
   saveMovieToWishlistEvent();
   deleteMovieFromFirebase();
+  updateMovieEvent();
 };
 
 module.exports = {
