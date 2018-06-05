@@ -24,7 +24,7 @@ const getAllMovies = () => {
   return new Promise((resolve, reject) => {
     const allMoviesArray = [];
     $.ajax({
-      method: 'GET',
+      method: 'GET', // READ
       url: `${fireBaseConfig.databaseURL}/movies.json`,
     })
       .done((allMoviesObject) => {
