@@ -139,16 +139,20 @@ const authEvents = () => {
     const email = $('#inputEmail').val();
     const password = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        $('#myMovies').removeClass('hide');
-        $('#search').addClass('hide');
-        $('#authScreen').addClass('hide');
-        getAllMoviesEvent();
-      })
       .catch((error) => {
         console.error('error from auth events', error);
       });
   });
+
+  $('#register-btn').click(() => {
+    const email = $('#registerEmail').val();
+    const password = $('#registerPassword').val();
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch((error) => {
+        console.error('error from registration events', error);
+      });
+  });
+
   $('#register-link').click(() => {
     $('#login-form').addClass('hide');
     $('#registration-form').removeClass('hide');
@@ -157,6 +161,13 @@ const authEvents = () => {
   $('#logIn-link').click(() => {
     $('#login-form').removeClass('hide');
     $('#registration-form').addClass('hide');
+  });
+
+  $('#logOut').click(() => {
+    firebase.auth().signOut().then(() => {
+    }).catch((error) => {
+      console.error('error from auth events', error);
+    });
   });
 };
 
@@ -172,4 +183,5 @@ const initializer = () => {
 
 module.exports = {
   initializer,
+  getAllMoviesEvent,
 };
